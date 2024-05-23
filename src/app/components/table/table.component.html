@@ -1,0 +1,117 @@
+<section id="table">
+  <p-panel header="Search">
+    <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" class="form-grid">
+      <div class="p-field">
+        <label for="ad_id">Ad ID</label>
+        <input
+          id="ad_id"
+          type="text"
+          pInputText
+          formControlName="ad_id"
+          class="input-field"
+        />
+      </div>
+
+      <div class="p-field">
+        <label for="fb_campaign_id">Facebook Campaign ID</label>
+        <input
+          id="fb_campaign_id"
+          type="text"
+          pInputText
+          formControlName="fb_campaign_id"
+          class="input-field"
+        />
+      </div>
+
+      <div class="p-field">
+        <label for="xyz_campaign_id">XYZ Campaign ID</label>
+        <input
+          id="xyz_campaign_id"
+          type="text"
+          pInputText
+          formControlName="xyz_campaign_id"
+          class="input-field"
+        />
+      </div>
+
+      <div class="p-field">
+        <label for="start_date">Start Date</label>
+        <p-calendar
+          id="start_date"
+          formControlName="start_date"
+          dateFormat="yy-mm-dd"
+          class="input-field"
+        ></p-calendar>
+      </div>
+
+      <div class="p-field">
+        <label for="end_date">End Date</label>
+        <p-calendar
+          id="end_date"
+          formControlName="end_date"
+          dateFormat="yy-mm-dd"
+          class="input-field"
+        ></p-calendar>
+      </div>
+
+      <div class="p-field full-width">
+        <button
+          type="submit"
+          pButton
+          label="Submit"
+          class="submit-button"
+        ></button>
+      </div>
+    </form>
+  </p-panel>
+  <p-table
+    [value]="campaings"
+    [rows]="5"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 25%">Ad Id</th>
+        <th style="width: 25%">FB Campaing Id</th>
+        <th style="width: 25%">Campaing Id</th>
+        <th style="width: 25%">Interest</th>
+        <th style="width: 25%">Impressions</th>
+        <th style="width: 25%">Clicks</th>
+        <th style="width: 25%">Spent</th>
+        <th style="width: 25%">Total Conversion</th>
+        <th style="width: 25%">Approved Conversion</th>
+        <th style="width: 25%">Start Date</th>
+        <th style="width: 25%">End date</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-campaign>
+      <tr>
+        <td>{{ campaign.ad_id }}</td>
+        <td>{{ campaign.fb_campaign_id }}</td>
+        <td>{{ campaign.xyz_campaign_id }}</td>
+        <td>{{ campaign.interest }}</td>
+        <td>{{ campaign.impressions }}</td>
+        <td>{{ campaign.clicks }}</td>
+        <td>{{ campaign.spent }}</td>
+        <td>{{ campaign.total_conversion }}</td>
+        <td>{{ campaign.approved_conversion }}</td>
+        <td>{{ campaign.start_date }}</td>
+        <td>{{ campaign.end_date }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalCounts"
+    [rowsPerPageOptions]="[10, 20, 30]"
+  />
+</section>
+
+<section id="chart" class="mt-5">
+  <div class="card">
+    <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+  </div>
+</section>

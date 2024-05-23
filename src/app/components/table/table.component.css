@@ -1,0 +1,21 @@
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .p-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    width: 100%;
+  }
+  
+  .full-width {
+    grid-column: 1 / -1; /* Make the submit button span across all columns */
+    display: flex;
+    justify-content: flex-start; /* Align button to the start of the row */
+  }
+  
